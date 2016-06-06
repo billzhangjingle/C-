@@ -10,6 +10,7 @@ extern "C" {
 
 typedef struct Teacher
 {
+	int infoId;
 	char name[64];
 	int age;
 	char studentInfo[1024];

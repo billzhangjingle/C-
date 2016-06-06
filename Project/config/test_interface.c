@@ -26,12 +26,12 @@ int  Test_AddTeacher()
 	char *pfileName = "./teacher.ini";
 	Teacher t1;
 	memset(&t1, 0, sizeof(Teacher));
-	t1.age = 11;
+	t1.infoId = 1;
+	t1.age 	  = 11;
 	
 	strcpy(t1.name, "name");
 	strcpy(t1.studentInfo,"s1, s2, s3");
-	
-	//int AddTeacher(char *pfileName, Teacher *pTe)
+	AddTeacher(pfileName, &t1);
 	
 
 	printf("¶ÁĞ´ÅäÖÃÏîÂÌµÆ²âÊÔÍ¨¹ı\n");
