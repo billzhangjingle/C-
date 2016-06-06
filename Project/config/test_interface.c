@@ -2,6 +2,7 @@
 #include "stdlib.h"
 #include "string.h"
 #include "cfg_op.h"
+#include "myop.h"
 
 
 #define  DB_sid			"oracle_sid"
@@ -21,49 +22,17 @@ void main_menu()
 
 int  Test_AddTeacher()
 {
-	int		rv = 0; 
-	int		choice = 0;
-
-	char	key[1024] ;
-	char	value[1024];
-
-	memset(key, 0, sizeof(key));
-	memset(value, 0, sizeof(value));
-
-	printf("\nplease enter key:");
-	scanf("%s", key);
-
-	printf("\nplease enter value:");
-	scanf("%s", value);
-
-	rv  = SetCfgItem(CFG_FILENAME, key, value, strlen(value));
-	if (rv != 0)
-	{
-		printf("SetCfgItem() err: %d \n", rv);
-		goto End;
-	}
-
-	/*
-	rv  = GetCfgItem(CFG_FILENAME, DB_sid, value2, &value2Len);
-	if (rv != 0)
-	{
-		printf("SetCfgItem() err: %d \n", rv);
-		goto End;
-	}
-
-	//比较长度
-	if (valuelen != value2Len)
-	{
-		printf("(valuelen != value2Len) err\n");
-		goto End;
-	}
-	//比较内容
-	if (memcmp(value, value2, value2Len) != 0)
-	{
-		printf("(memcmp(value, value2, value2Len)) err\n");
-		goto End;
-	}
-	*/
+	int rv = 0;
+	char *pfileName = "./teacher.ini";
+	Teacher t1;
+	memset(&t1, 0, sizeof(Teacher));
+	t1.age = 11;
+	
+	strcpy(t1.name, "name");
+	strcpy(t1.studentInfo,"s1, s2, s3");
+	
+	//int AddTeacher(char *pfileName, Teacher *pTe)
+	
 
 	printf("读写配置项绿灯测试通过\n");
 
@@ -74,31 +43,8 @@ End:
 
 int  Test_ModifyTeacher()
 {
-	int		rv = 0; 
-	int		choice = 0;
-
-	char	key[1024] ;
-	char	value[1024];
-	int		valueLen = 1024;
-
-	memset(key, 0, sizeof(key));
-	memset(value, 0, sizeof(value));
-
-	printf("\nplease enter key:");
-	scanf("%s", key);
-
-	//printf("\nplease enter value:");
-	//scanf("%s", value);
-
-	rv  = GetCfgItem(CFG_FILENAME, key, value, &valueLen);
-	if (rv != 0)
-	{
-		printf("SetCfgItem() err: %d \n", rv);
-		goto End;
-	}
-	printf("\n%s = %s", key, value);
-
-	printf("\n读写配置项绿灯测试通过\n");
+	int rv = 0;
+	//int ModifyTeacher(char *pfileName, Teacher *pTe);
 
 End:
 	return rv;
