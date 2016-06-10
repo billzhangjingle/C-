@@ -9,8 +9,8 @@ extern "C" {
 #endif
 
 int GetCfgItem(char *pFileName /*in*/, char *pKey /*in*/, char * pValue/*in out*/, int * pValueLen /*out*/);
-int WriteCfgItem(char *pFileName /*in*/, char *pItemName /*in*/, char *pItemValue/*in*/, int itemValueLen /*in*/);
-
+//int WriteCfgItem(char *pFileName /*in*/, char *pItemName /*in*/, char *pItemValue/*in*/, int itemValueLen /*in*/);
+int SetCfgItem(char *pFileName /*in*/, char *pKey /*in*/, char * pValue/*in*/, int ValueLen /*in*/)
 
 //int CfgItem_Init(void *pHandle, int iType);
 //int GetCfgItem(void *pHandle /*in*/, char *pKey /*in*/, char * pValue/*in out*/, int * pValueLen /*out*/);
