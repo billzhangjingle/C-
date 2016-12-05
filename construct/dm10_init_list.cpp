@@ -4,51 +4,64 @@
 #include <string.h>
 using namespace std;
 //初始化列表的相关文章 http://www.cnblogs.com/graphics/archive/2010/07/04/1770900.html
-struct Test1
-{
-    Test1(int a):i(a){}
-    int i ;
-};
-
 //struct Test1
 //{
-//    Test1() // 无参构造函数
-//    { 
-//        cout << "Construct Test1" << endl ;
-//    }
-//
+//    Test1(int a):i(a){
+//		cout<<"construct 2"<<endl;
+//	}
+//	
 //    Test1(const Test1& t1) // 拷贝构造函数
 //    {
 //        cout << "Copy constructor for Test1" << endl ;
-//        this->a = t1.a ;
+//        this->i = t1.i ;
 //    }
-//
-//    Test1& operator = (const Test1& t1) // 赋值运算符
-//    {
-//        cout << "assignment for Test1" << endl ;
-//        this->a = t1.a ;
-//        return *this;
-//    }
-//
-//    int a ;
+//    int i ;
 //};
-//
-struct Test2
-{
-    Test1 test1 ;
-    Test2(Test1 &t1)
-    {
-		//在此的时候 肯定是需要默认构造函数 和 赋值运算函数，在c++编译的时候能知知道Test1无默认构造函数，在编译的时候就会出错
-        test1 = t1 ;
-    }
-};
-//用的简单版的Test1 就会编译不通过
 
+struct Test1
+{
+    Test1() // 无参构造函数
+    { 
+        cout << "Construct Test1" << endl ;
+    }
+    Test1(int i):a(i){
+		cout<<"construct 2"<<endl;
+	}
+
+    Test1(const Test1& t1) // 拷贝构造函数
+    {
+        cout << "Copy constructor for Test1" << endl ;
+        this->a = t1.a ;
+    }
+
+    Test1& operator = (const Test1& t1) // 赋值运算符
+    {
+        cout << "assignment for Test1" << endl ;
+        this->a = t1.a ;
+        return *this;
+    }
+
+    int a ;
+};
+//
 //struct Test2
 //{
 //    Test1 test1 ;
-//    Test2(Test1 &t1):test1(t1){}
+//    Test2(Test1 &t1)
+//    {
+//		//在此的时候 肯定是需要默认构造函数 和 赋值运算函数，在c++编译的时候能知知道Test1无默认构造函数，在编译的时候就会出错
+//        test1 = t1 ;
+//    }
 //};
+//用的简单版的Test1 就会编译不通过
+
+struct Test2
+{
+    Test1 test1;
+	const int m; //常量来初始化
+	Test1 &aaa; //引用用初始化列表初始化,都是调用的系统提供的默认的复制构造函数进行初始化的
+    Test2(Test1 &t1): m(10),aaa(test1), test1(t1){}
+};
 //用简单版的Test1 使用这个就可以编译通过，因为直接调用拷贝构造函数，不会调用默认构造函数
 int main()
 {
